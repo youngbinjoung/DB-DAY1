@@ -1,0 +1,26 @@
+# 전체 데이터베이스 리스팅
+SHOW DATABASES;
+
+# `mysql` 데이터 베이스 선택
+USE mysql;
+
+# 테이블 리스팅
+SHOW TABLES;
+
+# `db` 테이블의 구조 확인
+DESC db;
+
+# 기존에 `board` 데이터베이스가 존재 한다면 삭제
+DROP DATABASE IF EXISTS board;
+
+# 새 데이터베이스(`board`) 생성
+CREATE DATABASE board;
+
+# 데이터베이스 추가 되었는지 확인
+SHOW DATABASES;
+
+# `board` 데이터 베이스 선택
+USE board;
+
+# 테이블 확인
+SHOW TABLES;

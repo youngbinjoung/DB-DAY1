@@ -1,0 +1,109 @@
+# k1 데이터베이스 삭제
+DROP DATABASE k1;
+
+# k1 데이터베이스 생성
+CREATE DATABASE k1;
+
+# k1 데이터베이스 선택
+USE k1;
+
+# article 테이블 만들기 (칼럼은 제목, 내용만)
+CREATE TABLE article(
+title CHAR(100),
+`body` TEXT
+);
+
+# 제목1, 내용1 데이터 추가
+INSERT INTO article
+SET title='제목1',
+`body`='내용1';
+
+# 제목2, 내용2 데이터 추가
+INSERT INTO article
+SET title='제목2',
+`body`='내용2';
+
+# 데이터 조회
+SELECT *
+FROM article;
+
+# 제목 데이터 aaa로 수정(모두 수정됨..)
+UPDATE article
+SET title='aaa';
+
+# `body`가 내용2인 것만 조회
+SELECT *
+FROM article
+WHERE `body`='내용2';
+
+# 내용2만 새로운내용2 로 수정
+UPDATE article
+SET `body`='새로운내용2'
+WHERE `body`='내용2';
+
+# 데이터 조회
+SELECT *
+FROM article;
+
+# 제목3, 내용3 데이터 두개 추가
+INSERT INTO article
+SET title='제목3',
+`body`='내용3';
+
+INSERT INTO article
+SET title='제목3',
+`body`='내용3';
+
+# 제목3인 게시물 중 두번째 것만 제목을 새제목3으로 수정 (게시물 구분 안됨)
+
+# 테이블 구조 수정
+DESC article;
+# 칼럼 추가, 기존 칼럼 삭제, 기존 칼럼 내용 변경
+ALTER TABLE article
+ADD COLUMN id INT ;
+
+# 데이터 조회(새로 생긴 id 칼럼의 값은 NULL)
+SELECT *
+FROM article;
+
+# 기존 데이터에 id값 추가
+UPDATE article
+SET id=4;
+
+# 기존 데이터 중 1개만 id를 2로 변경
+UPDATE article
+SET id=2
+WHERE `body`='내용3'
+LIMIT 1; 
+
+# 데이터 조회
+SELECT *
+FROM article;
+
+# 2번 게시물만 조회
+SELECT *
+FROM article
+WHERE id=2;
+
+# 2번 게시물, 데이터 삭제 => DELETE
+DELETE FROM article
+WHERE id=2;
+
+# 데이터 조회
+SELECT *
+FROM article;
+
+# 1번 게시물 제목을 제목2로 변경 => UPDATE
+UPDATE article
+SET title='제목2'
+LIMIT 1;
+
+# 데이터 조회
+SELECT *
+FROM article;
+
+# 모든 데이터 삭제
+DELETE FROM article;
+# 데이터 조회
+SELECT *
+FROM article;
